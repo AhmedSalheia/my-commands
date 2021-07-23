@@ -8,7 +8,7 @@ set filename=.gitCommitMessage
 
 @FOR /F "tokens=*" %%i IN ('git rev-parse --abbrev-ref HEAD') DO  set branch=%%i
 
-findstr /m "%filename%" .gitignore
+findstr /m "%filename%" .gitignore>nul
 
 if %errorlevel%==1 (
     echo %filename% >> .gitignore
@@ -16,7 +16,7 @@ if %errorlevel%==1 (
 
 echo %message% > %filename%
 
-git add *
+git add .
 git commit -F %filename%
 git push origin %branch%
 
