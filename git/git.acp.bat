@@ -25,7 +25,3 @@ goto :EOF
 :haltmsg
 echo No Message Provided
 goto :EOF
-
-:haltbranch
-echo No Branch Provided
-goto :EOF
