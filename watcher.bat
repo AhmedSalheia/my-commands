@@ -10,7 +10,7 @@ IF EXIST %file%\* (
     
     :loopOut
     timeout -t 1 >nul
-    for /f "tokens=*" %%i in ('dir /b /s /a-d %~dp1%file% ^| findstr /v /i "node_modules/* | .git/*"') do (
+    for /f "tokens=*" %%i in ('dir /b /s /a-d "%~dp1%file%" ^| findstr /v /i "node_modules/* | .git/* | vendor/*"') do (
         for %%a in (%%i) do (
             
             echo %%~aa|find /I /C "-----------">nul || ( echo [%%i] : changed : %date% : %time% & attrib -a %%a)

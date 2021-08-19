@@ -4,6 +4,7 @@ IF [%1]==[] goto halt
 
 
 CALL laravel new %1
+CALL cd %1
 
 SET /p multi=Do You Want It To be Multi Language(y,n)?
 @FOR /F "tokens=*" %%i IN ('convertStringCase %multi% lower') DO set multi=%%i

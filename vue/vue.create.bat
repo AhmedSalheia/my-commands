@@ -23,7 +23,7 @@ if [%errorLevel%]==[1] (
 )
 
 CALL vue create .
-CALL npm i normalize.css bootstrap jquery @popperjs/core swiper laravel-echo pusher-js axion @vueuse/head @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons @fortawesome/vue-fontawesome nprogress lodash --save
+CALL npm i normalize.css bootstrap jquery @popperjs/core swiper laravel-echo pusher-js axios @vueuse/head @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons @fortawesome/vue-fontawesome nprogress lodash --save
 
 if not exist "src" (
     mkdir src
