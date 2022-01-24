@@ -1,0 +1,16 @@
+<template>
+    <i :class="`fi-rr ${this.icon}`"></i>
+</template>
+
+<script>
+export default {
+    props: {
+        icon: {
+            required: true,
+            type: String,
+        },
+    },
+};
+</script>
+
+<style lang="scss" scoped></style>

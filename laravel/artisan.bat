@@ -1,4 +1,3 @@
 @echo off
-
-CALL php artisan %*
+php artisan %*
 goto :EOF

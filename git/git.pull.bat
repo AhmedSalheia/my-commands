@@ -9,7 +9,6 @@ if not '%choice%'=='' set choice=%choice:~0,1%
 goto :%choice%
 
 :y
-echo yes
 db.reset
 goto :EOF
 

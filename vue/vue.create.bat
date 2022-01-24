@@ -23,13 +23,18 @@ if [%errorLevel%]==[1] (
 )
 
 CALL vue create .
-CALL npm i normalize.css bootstrap jquery @popperjs/core swiper laravel-echo pusher-js axios @vueuse/head @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons @fortawesome/vue-fontawesome nprogress lodash --save
+CALL npm i normalize.css bootstrap jquery @popperjs/core swiper laravel-echo pusher-js axios @vueuse/head nprogress lodash --save
+@REM @fortawesome/vue-fontawesome @fortawesome/free-brands-svg-icons @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons
+CALL vue add i18n
 
 if not exist "src" (
     mkdir src
 )
 if not exist "src\init" (
     mkdir src\init
+)
+if not exist "src\sass" (
+    mkdir src\sass
 )
 if not exist "src\global\components" (
     mkdir src\global\components
@@ -40,6 +45,8 @@ if not exist "src\components\layouts" (
 CALL type %~dp0files\.main > src\main.js
 CALL type %~dp0files\.init > src\init\index.js
 CALL type %~dp0files\.global > src\global\components\globalComponents.js
+CALL type %~dp0files\.flatIcon > src\components\layouts\FlatIconComponent.vue
+CALL echo. > src\assets\style.scss
 
 CALL npm ls -g prettier | find /I /C "prettier" >nul
 if [%errorLevel%]==[1] (
@@ -54,9 +61,25 @@ CALL prettier --write .
 echo Referrences:
 echo    swiper:  https://swiperjs.com/vue
 echo    vue-meta: https://vue-meta.nuxtjs.org/
-echo    fontawesome: https://vuecomponent.com/integrations/fontawesome.html
+@REM echo    fontawesome: https://vuecomponent.com/integrations/fontawesome.html
 goto :EOF
 
 :haltErrNoProjectName
 echo No Project Name Provided
 goto :EOF
+
+@REM for vue-i18n you must add this to App.vue and then pass it to every view
+@REM setup() {
+@REM     const { t } = useI18n({
+@REM         inheritLocale: true,
+@REM         useScope: "local",
+@REM     });
+@REM     return {
+@REM         t,
+@REM     };
+@REM },
+
+@REM For useing font-awesom, just go add the icons you want to use to the library and then add this when 
+@REM you want to use the icon:
+@REM 
+@REM <font-awesome-icon v-if="!show" :icon="chevronDown" size="1x" />
